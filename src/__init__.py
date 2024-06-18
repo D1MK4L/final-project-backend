@@ -18,8 +18,13 @@ connect(
 
 cors = CORS(
     app,
-    resources={r"*": {"origins": ["http://localhost:4200", "https://d1mk4l.github.io/angular-frontend/"]}},
+    resources={r"*": {"origins": ["http://localhost:4200", "https://d1mk4l.github.io/angular-frontend"]}},
 )
+
+@app.after_request
+def after_request(response):
+    print(f"CORS headers: {response.headers.get('Access-Control-Allow-Origin')}")
+    return response
 
 app.register_blueprint(user, url_prefix="/user")
 app.register_blueprint(gameusername, url_prefix="/gameusername")
