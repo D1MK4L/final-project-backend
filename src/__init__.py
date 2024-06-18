@@ -18,7 +18,7 @@ connect(
 
 cors = CORS(
     app,
-    resources={r"*": {"origins": ["http://localhost:4200"]}},
+    resources={r"*": {"origins": ["http://localhost:4200", "https://d1mk4l.github.io/angular-frontend/"]}},
 )
 
 app.register_blueprint(user, url_prefix="/user")
